@@ -41,86 +41,49 @@
 </head>
 <body>
 
-	<% String utilisateurConnecte = (String) request.getSession().getAttribute(Constante.KEY_CONNECTED_USER);
-	%>
-
 	<!-- Navbar deplace dans autre jsp -->
 	<jsp:include page="../navBar.jsp">
 		<jsp:param value="${utilisateurConnecte}" name="utilisateurConnecte" />
 	</jsp:include>
 
-
 	<%
-		if (utilisateurConnecte == null) {
-			//Afficher formulaire connexion
+		Produit p = (Produit) request.getAttribute("produit");
 	%>
 
-	<div class="container">
-		<div class="row">
-			<form class="col s12" method="post" action="login">
-				<div class="row">
-					<div class="input-field col s6">
-						<input placeholder="Placeholder"
-							name="<%=Constante.PARAM_USER_LOGIN%>" id="first_name"
-							type="text" class="validate"> <label for="first_name">Utilisateur</label>
-					</div>
+	<!-- TODO rajout action bouton = modifier ma liste -->
+	<%-- action="edit?id=<%=p.getId()%>" --%>
+	<div class="row">
+		<form class="col s12"  method="post" action="edit?id=<%=p.getId()%>">
+			<!-- TODO action= a rajouter -->
+			<div class="row">
+				<div class="input-field col s12">
+					<input disabled value="<%=p.getId()%>" type="text"
+						class="validate" name="id"> <label for="id">ID</label>
 				</div>
-				<button class="waves-effect waves-light btn" value="Log in"
-					type="submit">Log in</button>
-			</form>
-		</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s6">
+					<input value="<%=p.getNom()%>" id="name" type="text"
+						class="validate" name="name"> <label for="name">Name</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s6">
+					<input value="<%=p.getDescription()%>" type="text" name="description">
+					 <label for="description">Description</label>
+				</div>
+			</div>
+
+			<div class="row">
+
+				<button class="btn waves-effect waves-light" type="submit">
+					Edit <i class="material-icons right">send</i>
+				</button>
+
+			</div>
+		</form>
 	</div>
 
-	<div class="container">
-		<div class="row">
-			<table class="col s10 striped">
-				<thead>
-					<tr>
-						<th data-field="id">Id</th>
-						<th data-field="name">Item Name</th>
-						<th data-field="description">Description</th>
-					</tr>
-				</thead>
-				<tbody>
-		<% List<Produit> listP = (List<Produit>) request.getAttribute("produits"); 
-			for(Produit p : listP) { %>
-					
-					<tr>
-						<td>
-							<%=p.getId() %>
-						</td>
-						<td>
-							<%=p.getNom() %>
-						</td>
-						<td>
-							<%=p.getDescription() %>
-						</td>
-						<td>
-							<a href="edit?id=<%=p.getId() %>">Edit</a>
-						</td>
-					</tr>
-
-			<%	}
-		%>
-				</tbody>
-
-			</table>
-		</div>
-	</div>
-
-	<%
-		} else {
-			//Afficher page bienvenue
-	%>
-
-
-	<%="Bienvenue " + utilisateurConnecte+" !"%><br />
-
-	<a href="logout">Log out</a>
-
-	<%
-		}
-	%>
 
 </body>
 <script>
