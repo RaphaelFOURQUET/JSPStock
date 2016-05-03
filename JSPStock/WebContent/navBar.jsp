@@ -7,6 +7,9 @@
         (String) request.getParameter( Constante.KEY_CONNECTED_USER );
 %>
 
+<link type="text/css" rel="stylesheet" href="css/materialize.min.css"
+	media="screen,projection" />
+
 <nav>
 	<div class="nav-wrapper">
 		<a href="#!" class="brand-logo">Logo</a> <a href="#"

@@ -1,6 +1,7 @@
 package fr.adaming.mvc;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +20,7 @@ public class AccueilServlet extends HttpServlet {
      */
     public AccueilServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        // Auto-generated constructor stub
     }
 
 	/**
@@ -28,10 +29,15 @@ public class AccueilServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Preparer des données
 		String nomUtilisateur = "gizh";
+		//Produit p = new Produit(1, "Banane", "Un fruit sphérique.");
+		
 		//Passer les données à la vue.
 		request.setAttribute("nom", nomUtilisateur);
+		
+		
 		//Deleguer le rendu page à la vue.
 		request.getServletContext().getRequestDispatcher("/WEB-INF/accueilVue.jsp").forward(request, response);
+		
 	}
 
 }
