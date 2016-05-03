@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC >
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html">
@@ -9,7 +9,9 @@
 	font-family: 'Material Icons';
 	font-style: normal;
 	font-weight: 400;
-	src: local('Material Icons'), local('MaterialIcons-Regular'), url(http://fonts.gstatic.com/s/materialicons/v16/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
+	src: local('Material Icons'), local('MaterialIcons-Regular'),
+		url(http://fonts.gstatic.com/s/materialicons/v16/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2)
+		format('woff2');
 }
 
 .material-icons {
@@ -28,7 +30,8 @@
 	-webkit-font-smoothing: antialiased;
 }
 </style>
-<link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+<link type="text/css" rel="stylesheet" href="css/materialize.min.css"
+	media="screen,projection" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
@@ -36,31 +39,59 @@
 <body>
 
 	<nav>
-	<div class="nav-wrapper">
-		<a href="#!" class="brand-logo">Logo</a> <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-		<ul class="right hide-on-med-and-down">
-			<li><a href="sass.html">Sass</a></li>
-			<li><a href="badges.html">Components</a></li>
-			<li><a href="collapsible.html">Javascript</a></li>
-			<li><a href="mobile.html">Mobile</a></li>
-		</ul>
-		<ul class="side-nav" id="mobile-demo">
-			<li><a href="sass.html">Sass</a></li>
-			<li><a href="badges.html">Components</a></li>
-			<li><a href="collapsible.html">Javascript</a></li>
-			<li><a href="mobile.html">Mobile</a></li>
-		</ul>
-	</div>
+		<div class="nav-wrapper">
+			<a href="#!" class="brand-logo">Logo</a> <a href="#"
+				data-activates="mobile-demo" class="button-collapse"><i
+				class="material-icons">menu</i></a>
+			<ul class="right hide-on-med-and-down">
+				<li><a href="sass.html">Sass</a></li>
+				<li><a href="badges.html">Components</a></li>
+				<li><a href="collapsible.html">Javascript</a></li>
+				<li><a href="mobile.html">Mobile</a></li>
+			</ul>
+			<ul class="side-nav" id="mobile-demo">
+				<li><a href="sass.html">Sass</a></li>
+				<li><a href="badges.html">Components</a></li>
+				<li><a href="collapsible.html">Javascript</a></li>
+				<li><a href="mobile.html">Mobile</a></li>
+			</ul>
+		</div>
 	</nav>
 
 	<div class="container">
 		<div class="row">
-			<div class="col s12">
-
-				CONTENU DE L'APPLICATION
-
-			</div>
-
+			<form class="col s12">
+				<div class="row">
+					<div class="input-field col s6">
+						<input placeholder="Placeholder" id="first_name" type="text"
+							class="validate"> <label for="first_name">First
+							Name</label>
+					</div>
+					<div class="input-field col s6">
+						<input id="last_name" type="text" class="validate"> <label
+							for="last_name">Last Name</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<input disabled value="I am not editable" id="disabled"
+							type="text" class="validate"> <label for="disabled">Disabled</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="password" type="password" class="validate"> <label
+							for="password">Password</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="email" type="email" class="validate"> <label
+							for="email">Email</label>
+					</div>
+				</div>
+				<button class="waves-effect waves-light btn"></button>
+			</form>
 		</div>
 	</div>
 
