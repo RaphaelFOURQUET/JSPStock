@@ -38,20 +38,44 @@
 <script type="text/javascript" src="js/materialize.min.js"></script>
 </head>
 <body>
-	<% String utilisateurConnecte = (String) request.getSession().getAttribute(Constante.KEY_CONNECTED_USER);%>
+
+	<% String utilisateurConnecte = (String) request.getSession().getAttribute(Constante.KEY_CONNECTED_USER);
+	%>
+
+	<%-- <nav>
+		<div class="nav-wrapper">
+			<a href="#!" class="brand-logo">Logo</a> <a href="#"
+				data-activates="mobile-demo" class="button-collapse"><i
+				class="material-icons">menu</i></a>
+			<%
+		if (utilisateurConnecte != null) {
+			//Afficher formulaire connexion
+	%>
+			<ul class="right hide-on-med-and-down">
+				<li><a href="logout">Log out</a></li>
+			</ul>
+			<% } %>
+		</div>
+	</nav> --%>
+
+	<!-- Navbar deplace dans autre jsp -->
+	<jsp:include page="navBar.jsp">
+		<jsp:param value="${utilisateurConnecte}" name="utilisateurConnecte"/>
+	</jsp:include>
+
 
 	<%
 		if (utilisateurConnecte == null) {
 			//Afficher formulaire connexion
 	%>
-	
-	<nav>
+
+	<!-- <nav>
 		<div class="nav-wrapper">
 			<a href="#!" class="brand-logo">Logo</a> <a href="#"
 				data-activates="mobile-demo" class="button-collapse"><i
 				class="material-icons">menu</i></a>
 		</div>
-	</nav>
+	</nav> -->
 
 	<%-- <form method="post" action="login">
 		<!-- On envoie ce formulaire à login -->
@@ -80,8 +104,8 @@
 		} else {
 			//Afficher page bienvenue
 	%>
-	
-	<nav>
+
+	<!-- <nav>
 		<div class="nav-wrapper">
 			<a href="#!" class="brand-logo">Logo</a> <a href="#"
 				data-activates="mobile-demo" class="button-collapse"><i
@@ -90,7 +114,7 @@
 				<li><a href="logout">Log out</a></li>
 			</ul>
 		</div>
-	</nav>
+	</nav> -->
 
 	<%="Bienvenue " + utilisateurConnecte+" !"%><br />
 
@@ -101,4 +125,7 @@
 	%>
 
 </body>
+<script>
+	$(".button-collapse").sideNav();
+</script>
 </html>
