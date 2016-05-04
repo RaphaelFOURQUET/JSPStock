@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.adaming.constante.Constante;
 import fr.adaming.constante.Donnees;
 
 /**
@@ -20,27 +21,27 @@ public class EditServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
+		int id = Integer.parseInt(request.getParameter(Constante.ID));
 		
 		Produit produit = Donnees.findProduit(id);
 		
 		//setAttribute
-		request.setAttribute("produit", produit);
+		request.setAttribute(Constante.PRODUIT, produit);
 		
 		request.getRequestDispatcher("/WEB-INF/editFormVue.jsp").forward(request, response);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int id = Integer.parseInt(req.getParameter("id"));
-		String name = req.getParameter("name");
-		String desc = req.getParameter("description");
+		int id = Integer.parseInt(req.getParameter(Constante.ID));
+		String name = req.getParameter(Constante.NAME);
+		String desc = req.getParameter(Constante.DESCRIPTION);
 		
 		//Remettre dans ma liste
-		Donnees.addProduit(new Produit(id, name, desc));
+		Donnees.editProduit(id, name, desc);
 		
 		//Rediriger
-		resp.sendRedirect("produit");
+		resp.sendRedirect(Constante.PRODUIT);
 	}
 	
 	

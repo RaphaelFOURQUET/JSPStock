@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.adaming.constante.Constante;
 import fr.adaming.constante.Donnees;
 
 /**
@@ -41,9 +42,9 @@ public class AjoutServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Recuperer infos
-		int id = Integer.parseInt(request.getParameter("id"));
-		String name = request.getParameter("name");
-		String desc = request.getParameter("description");
+		int id = Integer.parseInt(request.getParameter(Constante.ID));
+		String name = request.getParameter(Constante.NAME);
+		String desc = request.getParameter(Constante.DESCRIPTION);
 		
 		//Remettre dans ma liste
 		Donnees.addProduit(new Produit(id, name, desc));

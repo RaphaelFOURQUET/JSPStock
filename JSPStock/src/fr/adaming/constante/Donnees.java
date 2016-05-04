@@ -50,10 +50,25 @@ public class Donnees {
 	public static int firstFreeIndex() {
 		int i;
 		for(i=0; i<produitList.size(); i++) {
-			if(produitList.get(i) == null)
+			if(Donnees.getId(i) == null)
 				return i;
 		}
 		return i++;
+	}
+
+	public static void editProduit(int id, String name, String desc) {
+		Produit p = findProduit(id);
+		p.setNom(name);
+		p.setDescription(desc);
+		
+	}
+	
+	public static Produit getId(int index) {
+		for(Produit p : produitList) {
+			if(p.getId() == index)
+				return p;
+		}
+		return null;
 	}
 	
 }

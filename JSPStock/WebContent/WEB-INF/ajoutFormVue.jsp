@@ -1,5 +1,5 @@
-<%@page import="fr.adaming.produits.Produit"%>
-<%@page import="java.util.List"%>
+<%@ page import="fr.adaming.produits.Produit"%>
+<%@ page import="java.util.List"%>
 <%@ page import="fr.adaming.constante.Constante"%>
 <%@ page language="java" contentType="text/html"%>
 
@@ -21,25 +21,24 @@
 	<div class="row">
 		<form class="col s12" method="post" action="ajout">
 			<div class="row">
-				<div class="input-field col s6">
+				<div class="input-field col <%=Constante.COL_SIZE%>">
 					<input disabled value="<%=freeIndex%>" type="text" class="validate"
-						name="id"> <label for="id">ID</label>
+						name="<%=Constante.ID%>"> <label>ID</label>
 				</div>
-				<div class="input-field col s6">
-					<input value="<%=freeIndex%>" type="hidden" name="id"> <label
-						for="id"></label>
+				<div class="input-field col <%=Constante.COL_SIZE%>">
+					<input value="<%=freeIndex%>" type="hidden" name="<%=Constante.ID%>">
 				</div>
 			</div>
 			<div class="row">
-				<div class="input-field col s6">
+				<div class="input-field col <%=Constante.COL_SIZE%>">
 					<input placeholder="name" id="name" type="text" class="validate"
-						name="name"> <label for="name">Name</label>
+						name="<%=Constante.NAME%>"> <label>Name</label>
 				</div>
 			</div>
 			<div class="row">
-				<div class="input-field col s6">
-					<input placeholder="description" type="text" name="description">
-					<label for="description">Description</label>
+				<div class="input-field col <%=Constante.COL_SIZE%>">
+					<input placeholder="description" type="text" name="<%=Constante.DESCRIPTION%>">
+					<label>Description</label>
 				</div>
 			</div>
 
