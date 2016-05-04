@@ -31,8 +31,6 @@
 		<ul class="side-nav" id="mobile-demo">
 			<li><a href="produit">Produits</a></li>
 		</ul>
-		<%
-			}
-		%>
+		<% } %>
 	</div>
 </nav>

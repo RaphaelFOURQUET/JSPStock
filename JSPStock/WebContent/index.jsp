@@ -59,9 +59,16 @@
 			<form class="col s12" method="post" action="login">
 				<div class="row">
 					<div class="input-field col s6">
-						<input placeholder="Placeholder"
+						<input placeholder="login"
 							name="<%=Constante.PARAM_USER_LOGIN%>" id="first_name"
 							type="text" class="validate"> <label for="first_name">Utilisateur</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s6">
+						<input placeholder="password"
+							name="password" type="password" class="validate"> 
+							<label for="password">Password</label>
 					</div>
 				</div>
 				<button class="waves-effect waves-light btn" value="Log in"

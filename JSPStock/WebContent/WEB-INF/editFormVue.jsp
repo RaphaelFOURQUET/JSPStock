@@ -2,7 +2,7 @@
 <%@page import="java.util.List"%>
 <%@ page import="fr.adaming.constante.Constante"%>
 <%@ page language="java" contentType="text/html"%>
-<!DOCTYPE html PUBLIC>
+<!-- <!DOCTYPE html PUBLIC>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -38,7 +38,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
-</head>
+</head> -->
+
+ <jsp:include page="head.jsp"/>
+
 <body>
 
 	<!-- Navbar deplace dans autre jsp -->
@@ -54,12 +57,10 @@
 	<div class="row">
 		<form class="col s12"  method="post" action="edit">
 			<div class="row">
-				<div class="input-field col s6">
+			<div class="input-field col s6">
 					<input disabled value="<%=p.getId()%>" type="text"
 						class="validate" name="id"> <label for="id">ID</label>
 				</div>
-			</div>
-			<div class="row">
 				<div class="input-field col s6">
 					<input value="<%=p.getId()%>" type="hidden"
 					 name="id"> <label for="id"></label>

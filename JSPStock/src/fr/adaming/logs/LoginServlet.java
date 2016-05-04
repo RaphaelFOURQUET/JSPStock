@@ -27,7 +27,6 @@ public class LoginServlet extends HttpServlet {
 
 	private void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String sessionLogin = (String) request.getSession().getAttribute(Constante.KEY_CONNECTED_USER);
-		//String login = request.getParameter("login");
 		
 		String user = request.getParameter(Constante.PARAM_USER_LOGIN);
 
