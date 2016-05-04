@@ -10,6 +10,7 @@
 	<!-- Navbar deplace dans autre jsp -->
 	<jsp:include page="navBar.jsp">
 		<jsp:param value="${utilisateurConnecte}" name="utilisateurConnecte" />
+		<jsp:param value="Edition" name="logo" />
 	</jsp:include>
 
 	<%

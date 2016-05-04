@@ -3,13 +3,14 @@
 <%@ page import="fr.adaming.constante.Constante"%>
 <%@ page language="java" contentType="text/html"%>
 
- <jsp:include page="head.jsp"/>
+<jsp:include page="head.jsp"/>
  
 <body>
 
 	<!-- Navbar deplace dans autre jsp -->
 	<jsp:include page="navBar.jsp">
 		<jsp:param value="${utilisateurConnecte}" name="utilisateurConnecte" />
+		<jsp:param value="Ajout" name="logo" />
 	</jsp:include>
 
 	<%

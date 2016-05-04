@@ -15,6 +15,7 @@ public class Constante {
 	public static final String NAME = "name";
 	public static final String DESCRIPTION = "description";
 	public static final String PRODUIT = "produit";
+	public static final String LOGO = "logo";
 	
 	public static final String COL_SIZE = "s6";
 	public static final boolean DISABLED = true;	//RFRF : try dynamic <> attributes

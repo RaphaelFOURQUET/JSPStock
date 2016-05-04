@@ -5,6 +5,8 @@
 <%
     String utilisateurConnecte = 
         (String) request.getParameter( Constante.KEY_CONNECTED_USER );
+	String logo = 
+			(String) request.getParameter(Constante.LOGO);
 %>
 
 <link type="text/css" rel="stylesheet" href="css/materialize.min.css"
@@ -12,7 +14,7 @@
 
 <nav>
 	<div class="nav-wrapper">
-		<a href="#!" class="brand-logo">Gestion des Stocks</a> <a href="#"
+		<a href="#!" class="brand-logo"><%= logo %></a> <a href="#"
 			data-activates="mobile-demo" class="button-collapse"><i
 			class="material-icons">menu</i></a>
 		<%
