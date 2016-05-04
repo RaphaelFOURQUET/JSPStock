@@ -12,7 +12,7 @@
 <title>accueilVue.jsp</title>
 </head>
 <body>
-	<jsp:include page="../navBar.jsp">
+	<jsp:include page="navBar.jsp">
 		<jsp:param value="" name="utilisateurConnecte" />
 	</jsp:include>
 	Bonjour, bienvenue <%=nomUtilisateur%>.

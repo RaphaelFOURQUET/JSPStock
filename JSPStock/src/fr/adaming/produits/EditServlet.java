@@ -32,11 +32,7 @@ public class EditServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//Post pas bonne solution ?
-		//TODO : Recuperer id sur disabled input??? obligatoirement par URL ?
-		int id = Integer.parseInt(req.getParameter("id"));	//Recup par URL sur post ..???
-		//int id = 1;	
-		//int id = ((Produit)req.getAttribute("produit")).getId();
+		int id = Integer.parseInt(req.getParameter("id"));
 		String name = req.getParameter("name");
 		String desc = req.getParameter("description");
 		

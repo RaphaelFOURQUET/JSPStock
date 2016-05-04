@@ -48,40 +48,41 @@
 
 	<%
 		Produit p = (Produit) request.getAttribute("produit");
+		int freeIndex = (int) request.getAttribute("freeIndex");
 	%>
 
 	<!-- Id est passe deux fois, en disabled et en hidden pour etre vu par utilisateur (disabled) et transmis en formulaire(hidden) -->
 	<div class="row">
-		<form class="col s12"  method="post" action="edit">
+		<form class="col s12" method="post" action="ajout">
 			<div class="row">
 				<div class="input-field col s6">
-					<input disabled value="<%=p.getId()%>" type="text"
+					<input disabled value="<%=freeIndex%>" type="text"
 						class="validate" name="id"> <label for="id">ID</label>
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s6">
-					<input value="<%=p.getId()%>" type="hidden"
+					<input value="<%=freeIndex%>" type="hidden"
 					 name="id"> <label for="id"></label>
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s6">
-					<input value="<%=p.getNom()%>" id="name" type="text"
-						class="validate" name="name"> <label for="name">Name</label>
+					<input placeholder="name" id="name" type="text" class="validate"
+						name="name"> <label for="name">Name</label>
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s6">
-					<input value="<%=p.getDescription()%>" type="text" name="description">
-					 <label for="description">Description</label>
+					<input placeholder="description" type="text" name="description">
+					<label for="description">Description</label>
 				</div>
 			</div>
 
 			<div class="row">
 
 				<button class="btn waves-effect waves-light" type="submit">
-					Edit <i class="material-icons right">send</i>
+					Ajouter <i class="material-icons right">send</i>
 				</button>
 
 			</div>

@@ -27,18 +27,33 @@ public class Donnees {
 		return null;
 	}
 	
+	//Add or Edit a Produit from produitList
 	public static void addProduit(Produit p) {
+		Produit currentP = null;
 		for(Produit prod : produitList) {
 			if(p.getId() == prod.getId()) {
 				//Deja present, on remove
-				produitList.remove(prod);
+				currentP = prod;
+				//produitList.remove(prod);	//RFRF : pose des problemes d acces concurrent à produitList.
 			}
 		}
+		if(currentP != null) {
+			produitList.remove(currentP);
+		}
 		produitList.add(p);
-//		if(produitList.contains(p))
-//			produitList.set(p.getId(), p);
-//		else
-//			produitList.add(p);
+	}
+	
+	public static void removeProduit(Produit p) {
+		produitList.remove(p);
+	}
+	
+	public static int firstFreeIndex() {
+		int i;
+		for(i=0; i<produitList.size(); i++) {
+			if(produitList.get(i) == null)
+				return i;
+		}
+		return i++;
 	}
 	
 }

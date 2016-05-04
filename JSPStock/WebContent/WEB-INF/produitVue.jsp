@@ -45,31 +45,10 @@
 	%>
 
 	<!-- Navbar deplace dans autre jsp -->
-	<jsp:include page="../navBar.jsp">
+	<jsp:include page="navBar.jsp">
 		<jsp:param value="${utilisateurConnecte}" name="utilisateurConnecte" />
 	</jsp:include>
 
-
-	<%
-		if (utilisateurConnecte == null) {
-			//Afficher formulaire connexion
-	%>
-
-	<div class="container">
-		<div class="row">
-			<form class="col s12" method="post" action="login">
-				<div class="row">
-					<div class="input-field col s6">
-						<input placeholder="Placeholder"
-							name="<%=Constante.PARAM_USER_LOGIN%>" id="first_name"
-							type="text" class="validate"> <label for="first_name">Utilisateur</label>
-					</div>
-				</div>
-				<button class="waves-effect waves-light btn" value="Log in"
-					type="submit">Log in</button>
-			</form>
-		</div>
-	</div>
 
 	<div class="container">
 		<div class="row">
@@ -77,50 +56,32 @@
 				<thead>
 					<tr>
 						<th data-field="id">Id</th>
-						<th data-field="name">Item Name</th>
+						<th data-field="name">Name</th>
 						<th data-field="description">Description</th>
 					</tr>
 				</thead>
 				<tbody>
-		<% List<Produit> listP = (List<Produit>) request.getAttribute("produits"); 
+					<% List<Produit> listP = (List<Produit>) request.getAttribute("produits"); 
 			for(Produit p : listP) { %>
-					
+
 					<tr>
-						<td>
-							<%=p.getId() %>
-						</td>
-						<td>
-							<%=p.getNom() %>
-						</td>
-						<td>
-							<%=p.getDescription() %>
-						</td>
-						<td>
-							<a href="edit?id=<%=p.getId() %>">Edit</a>
-						</td>
+						<td><%=p.getId() %></td>
+						<td><%=p.getNom() %></td>
+						<td><%=p.getDescription() %></td>
+						<td><a href="edit?id=<%=p.getId() %>">Edit</a></td>
+						<td><a href="delete?id=<%=p.getId() %>">Delete</a></td>
 					</tr>
 
-			<%	}
+					<%	}
 		%>
+					<tr>
+						<td><a href="ajout" class="waves-effect waves-light btn">Ajout</a></td>
+					</tr>
 				</tbody>
 
 			</table>
 		</div>
 	</div>
-
-	<%
-		} else {
-			//Afficher page bienvenue
-	%>
-
-
-	<%="Bienvenue " + utilisateurConnecte+" !"%><br />
-
-	<a href="logout">Log out</a>
-
-	<%
-		}
-	%>
 
 </body>
 <script>

@@ -42,24 +42,8 @@
 	<% String utilisateurConnecte = (String) request.getSession().getAttribute(Constante.KEY_CONNECTED_USER);
 	%>
 
-	<%-- <nav>
-		<div class="nav-wrapper">
-			<a href="#!" class="brand-logo">Logo</a> <a href="#"
-				data-activates="mobile-demo" class="button-collapse"><i
-				class="material-icons">menu</i></a>
-			<%
-		if (utilisateurConnecte != null) {
-			//Afficher formulaire connexion
-	%>
-			<ul class="right hide-on-med-and-down">
-				<li><a href="logout">Log out</a></li>
-			</ul>
-			<% } %>
-		</div>
-	</nav> --%>
-
 	<!-- Navbar deplace dans autre jsp -->
-	<jsp:include page="navBar.jsp">
+	<jsp:include page="WEB-INF/navBar.jsp">
 		<jsp:param value="${utilisateurConnecte}" name="utilisateurConnecte"/>
 	</jsp:include>
 
@@ -69,20 +53,6 @@
 			//Afficher formulaire connexion
 	%>
 
-	<!-- <nav>
-		<div class="nav-wrapper">
-			<a href="#!" class="brand-logo">Logo</a> <a href="#"
-				data-activates="mobile-demo" class="button-collapse"><i
-				class="material-icons">menu</i></a>
-		</div>
-	</nav> -->
-
-	<%-- <form method="post" action="login">
-		<!-- On envoie ce formulaire à login -->
-		<label for="<%=Constante.PARAM_USER_LOGIN %>"> utilisateur : </label> <input name="<%=Constante.PARAM_USER_LOGIN %>" type="text" /><br />
-
-		<input value="Log in" type="submit" />
-	</form> --%>
 
 	<div class="container">
 		<div class="row">
@@ -105,20 +75,9 @@
 			//Afficher page bienvenue
 	%>
 
-	<!-- <nav>
-		<div class="nav-wrapper">
-			<a href="#!" class="brand-logo">Logo</a> <a href="#"
-				data-activates="mobile-demo" class="button-collapse"><i
-				class="material-icons">menu</i></a>
-			<ul class="right hide-on-med-and-down">
-				<li><a href="logout">Log out</a></li>
-			</ul>
-		</div>
-	</nav> -->
-
 	<%="Bienvenue " + utilisateurConnecte+" !"%><br />
 
-	<a href="logout">Log out</a>
+	<a class="waves-effect waves-light btn" href="logout">Log out</a>
 
 	<%
 		}
