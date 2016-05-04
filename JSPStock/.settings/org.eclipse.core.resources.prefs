@@ -1,2 +1,9 @@
 eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/ajoutFormVue.jsp=UTF-8
+encoding//WebContent/WEB-INF/editFormVue.jsp=UTF-8
+encoding//WebContent/WEB-INF/head.jsp=UTF-8
+encoding//WebContent/WEB-INF/produitVue.jsp=UTF-8
+encoding//WebContent/css/materialize.css=UTF-8
+encoding//WebContent/css/materialize.min.css=UTF-8
+encoding//WebContent/index.jsp=UTF-8
 encoding/<project>=UTF-8

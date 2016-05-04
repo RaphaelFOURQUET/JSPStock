@@ -22,16 +22,12 @@
 				//Afficher formulaire connexion
 		%>
 		<ul class="right hide-on-med-and-down">
+			<li><a href="produit">Produits</a></li>
 			<li><a href="logout">Log out</a></li>
 		</ul>
 		<ul class="side-nav" id="mobile-demo">
+			<li><a href="produit">Produits</a></li>
 			<li><a href="logout">Log out</a></li>
-		</ul>
-		<ul class="right hide-on-med-and-down">
-			<li><a href="produit">Produits</a></li>
-		</ul>
-		<ul class="side-nav" id="mobile-demo">
-			<li><a href="produit">Produits</a></li>
 		</ul>
 		<% } %>
 	</div>

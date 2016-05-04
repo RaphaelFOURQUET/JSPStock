@@ -22,22 +22,22 @@
 	<div class="row">
 		<form class="col s12" method="post" action="ajout">
 			<div class="row">
-				<div class="input-field col <%=Constante.COL_SIZE%>">
+				<div class="<%=Constante.COL_SIZE%>">
 					<input disabled value="<%=freeIndex%>" type="text" class="validate"
 						name="<%=Constante.ID%>"> <label>ID</label>
 				</div>
-				<div class="input-field col <%=Constante.COL_SIZE%>">
+				<div class="<%=Constante.COL_SIZE%>">
 					<input value="<%=freeIndex%>" type="hidden" name="<%=Constante.ID%>">
 				</div>
 			</div>
 			<div class="row">
-				<div class="input-field col <%=Constante.COL_SIZE%>">
+				<div class="<%=Constante.COL_SIZE%>">
 					<input placeholder="name" id="name" type="text" class="validate"
 						name="<%=Constante.NAME%>"> <label>Name</label>
 				</div>
 			</div>
 			<div class="row">
-				<div class="input-field col <%=Constante.COL_SIZE%>">
+				<div class="<%=Constante.COL_SIZE%>">
 					<input placeholder="description" type="text" name="<%=Constante.DESCRIPTION%>">
 					<label>Description</label>
 				</div>
@@ -45,7 +45,7 @@
 
 			<div class="row">
 
-				<button class="btn waves-effect waves-light" type="submit">
+				<button class="<%=Constante.BUTTON_COLOR %>" type="submit">
 					Ajouter <i class="material-icons right">send</i>
 				</button>
 

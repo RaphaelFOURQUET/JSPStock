@@ -25,20 +25,20 @@
 		<div class="row">
 			<form class="col s12" method="post" action="login">
 				<div class="row">
-					<div class="input-field col <%=Constante.COL_SIZE%>">
+					<div class="<%=Constante.COL_SIZE%>">
 						<input placeholder="login"
 							name="<%=Constante.PARAM_USER_LOGIN%>" id="first_name"
 							type="text" class="validate"> <label for="first_name">Utilisateur</label>
 					</div>
 				</div>
 				<div class="row">
-					<div class="input-field col <%=Constante.COL_SIZE%>">
+					<div class="<%=Constante.COL_SIZE%>">
 						<input placeholder="password"
 							name="password" type="password" class="validate"> 
 							<label for="password">Password</label>
 					</div>
 				</div>
-				<button class="waves-effect waves-light btn" value="Log in"
+				<button class="<%=Constante.BUTTON_COLOR %>" value="Log in"
 					type="submit">Log in</button>
 			</form>
 		</div>
@@ -51,7 +51,7 @@
 
 	<%="Bienvenue " + utilisateurConnecte+" !"%><br />
 
-	<a class="waves-effect waves-light btn" href="logout">Log out</a>
+	<a class="<%=Constante.BUTTON_COLOR %>" href="logout">Log out</a>
 
 	<%
 		}

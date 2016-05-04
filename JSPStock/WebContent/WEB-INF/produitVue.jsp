@@ -41,7 +41,7 @@
 
 					<%	} %>
 					<tr>
-						<td><a href="ajout" class="waves-effect waves-light btn">Ajout</a></td>
+						<td><a href="ajout" class="<%=Constante.BUTTON_COLOR %>">Ajout</a></td>
 					</tr>
 				</tbody>
 
