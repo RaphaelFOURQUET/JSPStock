@@ -49,10 +49,15 @@
 			//Afficher page bienvenue
 	%>
 
+	<div class="container">
+		<div class="row">
 	<%="Bienvenue " + utilisateurConnecte+" !"%><br />
-
-	<a class="<%=Constante.BUTTON_COLOR %>" href="logout">Log out</a>
-
+		</div>
+		<div class="row">
+	<a class="<%=Constante.BUTTON_COLOR %>" href="produit">Produits</a>
+		</div>
+	</div>
+	
 	<%
 		}
 	%>

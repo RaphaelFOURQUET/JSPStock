@@ -19,7 +19,7 @@ public class Donnees {
 			new Produit(1, "Banane", "Un fruit sphérique."),
 			new Produit(2, "Table", "Un meuble."),
 			new Produit(3, "新唐人電視台 ", "Test UTF-8."))*/);
-		
+
 	public static Produit findProduit(int id) {
 		for(Produit p: produitList) {
 			if(p.getId() == id)
@@ -27,7 +27,7 @@ public class Donnees {
 		}
 		return null;
 	}
-	
+
 	//Add or Edit a Produit from produitList
 	public static void addProduit(Produit p) {
 		Produit currentP = null;
@@ -43,11 +43,11 @@ public class Donnees {
 		}
 		produitList.add(p);
 	}
-	
+
 	public static void removeProduit(Produit p) {
 		produitList.remove(p);
 	}
-	
+
 	public static int firstFreeIndex() {
 		int i;
 		for(i=0; i<produitList.size(); i++) {
@@ -61,9 +61,9 @@ public class Donnees {
 		Produit p = findProduit(id);
 		p.setNom(name);
 		p.setDescription(desc);
-		
+
 	}
-	
+
 	public static Produit getId(int index) {
 		for(Produit p : produitList) {
 			if(p.getId() == index)
@@ -71,15 +71,19 @@ public class Donnees {
 		}
 		return null;
 	}
-	
-	public static void recupererDonnees() {	//RFRF : modifier selon xml ou BD ?
-		ParserXML parserXML = new ParserXML();
-		parserXML.readXMLFile(Constante.XML_PATH+"/Produits.xml");
+
+	public static void recupererDonnees() {
+		if(Constante.PERSISTANCE_MODE == ModePersistance.XML) {
+			ParserXML parserXML = new ParserXML();
+			parserXML.readXMLFile(Constante.XML_PATH+"/Produits.xml");
+		}
 	}
-	
-	public static void ecrireDonnees() {	//RFRF : modifier selon XML ou BD ?
-		ParserXML parserXML = new ParserXML();
-		parserXML.writeXMLFile(Constante.XML_PATH+"/Produits.xml");
+
+	public static void ecrireDonnees() {	
+		if(Constante.PERSISTANCE_MODE == ModePersistance.XML) {
+			ParserXML parserXML = new ParserXML();
+			parserXML.writeXMLFile(Constante.XML_PATH+"/Produits.xml");
+		}
 	}
-	
+
 }

@@ -20,4 +20,9 @@
     <nom>新唐人電視台</nom>
     <description>Test UTF-8.</description>
   </Produit>
+  <Produit>
+    <id>4</id>
+    <nom>Salut</nom>
+    <description>Test persistance.</description>
+  </Produit>
 </Produits>
