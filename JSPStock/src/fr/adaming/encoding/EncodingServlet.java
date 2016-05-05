@@ -1,33 +1,27 @@
-package fr.adaming.produits;
+package fr.adaming.encoding;
 
 import java.io.IOException;
 
+import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.adaming.constante.Donnees;
-
 /**
- * Servlet implementation class ProduitServlet
+ * Servlet implementation class EncodingServlet
  */
-@WebServlet("/produit")
-public class ProduitServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;			
+@WebServlet("/test")	//TODO : modifier WebServlet en * et tester ???
+public class EncodingServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//recuperer donnees
-		Donnees.recupererDonnees();
-		
-		//set
-		request.setAttribute("produits", Donnees.produitList);
-
-		request.getRequestDispatcher("/WEB-INF/produitVue.jsp").forward(request, response);
+		response.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
 	}
 
 	/**
@@ -37,5 +31,20 @@ public class ProduitServlet extends HttpServlet {
 		// Auto-generated method stub
 		doGet(request, response);
 	}
+	
+
+	public void doFilter(HttpServletRequest request, HttpServletResponse response,
+			FilterChain chain)
+					throws IOException, ServletException {
+
+		response.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
+
+		// Pass control on to the next filter
+		chain.doFilter(request, response);
+
+	}
+
+
 
 }

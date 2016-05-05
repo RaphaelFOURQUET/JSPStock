@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Produits>
+  <Produit>
+    <id>0</id>
+    <nom>Stylo</nom>
+    <description>Indispensable pour écrire.</description>
+  </Produit>
+  <Produit>
+    <id>1</id>
+    <nom>Banane</nom>
+    <description>Un fruit sphérique.</description>
+  </Produit>
+  <Produit>
+    <id>2</id>
+    <nom>Table</nom>
+    <description>Un meuble.</description>
+  </Produit>
+  <Produit>
+    <id>3</id>
+    <nom>新唐人電視台</nom>
+    <description>Test UTF-8.</description>
+  </Produit>
+</Produits>

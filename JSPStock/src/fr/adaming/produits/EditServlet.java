@@ -40,6 +40,9 @@ public class EditServlet extends HttpServlet {
 		//Remettre dans ma liste
 		Donnees.editProduit(id, name, desc);
 		
+		//Mettre à jour persistance
+		Donnees.ecrireDonnees();
+		
 		//Rediriger
 		resp.sendRedirect(Constante.PRODUIT);
 	}

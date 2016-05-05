@@ -41,6 +41,9 @@ public class AjoutServlet extends HttpServlet {
 		//Remettre dans ma liste
 		Donnees.addProduit(new Produit(id, name, desc));
 		
+		//Mettre à jour persistance
+		Donnees.ecrireDonnees();
+		
 		//Rediriger
 		response.sendRedirect("produit");
 	}

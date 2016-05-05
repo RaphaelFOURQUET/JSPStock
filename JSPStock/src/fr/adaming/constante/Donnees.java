@@ -4,9 +4,9 @@
 package fr.adaming.constante;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+import fr.adaming.persistance.xml.ParserXML;
 import fr.adaming.produits.Produit;
 
 /**
@@ -15,10 +15,10 @@ import fr.adaming.produits.Produit;
  */
 public class Donnees {
 
-	public static List<Produit> produitList = new ArrayList<Produit>(Arrays.asList(new Produit(0, "Stylo", "Indispensable pour écrire."),
+	public static List<Produit> produitList = new ArrayList<Produit>(/*Arrays.asList(new Produit(0, "Stylo", "Indispensable pour écrire."),
 			new Produit(1, "Banane", "Un fruit sphérique."),
 			new Produit(2, "Table", "Un meuble."),
-			new Produit(3, "新唐人電視台 ", "Test UTF-8.")));
+			new Produit(3, "新唐人電視台 ", "Test UTF-8."))*/);
 		
 	public static Produit findProduit(int id) {
 		for(Produit p: produitList) {
@@ -70,6 +70,16 @@ public class Donnees {
 				return p;
 		}
 		return null;
+	}
+	
+	public static void recupererDonnees() {	//RFRF : modifier selon xml ou BD ?
+		ParserXML parserXML = new ParserXML();
+		parserXML.readXMLFile(Constante.XML_PATH+"/Produits.xml");
+	}
+	
+	public static void ecrireDonnees() {	//RFRF : modifier selon XML ou BD ?
+		ParserXML parserXML = new ParserXML();
+		parserXML.writeXMLFile(Constante.XML_PATH+"/Produits.xml");
 	}
 	
 }

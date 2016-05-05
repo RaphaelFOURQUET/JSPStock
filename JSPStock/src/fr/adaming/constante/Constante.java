@@ -17,6 +17,8 @@ public class Constante {
 	public static final String PRODUIT = "produit";
 	public static final String LOGO = "logo";
 	
+	public static final String XML_PATH = "C:/Cours/GitHub/JSPStock/JSPStock/src/fr/adaming/persistance/xml";
+	
 	//RFRF : necessite un clean tomcat à chaque changement.
 	public static final String COL_SIZE = "input-field col s6";
 	public static final String BUTTON_COLOR = "red lighten-2 btn waves-effect waves-light";

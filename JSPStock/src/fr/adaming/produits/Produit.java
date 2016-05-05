@@ -8,6 +8,7 @@ package fr.adaming.produits;
  *
  */
 public class Produit {
+
 	private int id;
 	private String nom;
 	private String description;
@@ -40,6 +41,11 @@ public class Produit {
 		this.id = id;
 		this.nom = nom;
 		this.description = description;
+	}
+	
+	@Override
+	public String toString() {
+		return "Produit [id=" + id + ", nom=" + nom + ", description=" + description + "]";
 	}
 	
 	

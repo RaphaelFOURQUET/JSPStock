@@ -27,6 +27,9 @@ public class DeleteServlet extends HttpServlet {
 		//Delete produit
 		Donnees.removeProduit(p);
 		
+		//Mettre à jour persistance
+		Donnees.ecrireDonnees();
+		
 		//Redirection Produits
 		response.sendRedirect("produit");
 	}
