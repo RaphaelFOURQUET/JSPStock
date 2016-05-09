@@ -36,6 +36,10 @@ public class Produit {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public Produit() {
+		
+	}
 
 	public Produit(int id, String nom, String description) {
 		this.id = id;

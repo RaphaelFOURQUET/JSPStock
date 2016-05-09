@@ -28,6 +28,9 @@ public class EditServlet extends HttpServlet {
 		//setAttribute
 		request.setAttribute(Constante.PRODUIT, produit);
 		
+		//stocker session dernier produit
+		request.getSession().setAttribute(Constante.LAST_EDITED_PRODUCT, produit);
+		
 		request.getRequestDispatcher("/WEB-INF/editFormVue.jsp").forward(request, response);
 	}
 

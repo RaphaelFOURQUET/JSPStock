@@ -17,6 +17,7 @@ public class Constante {
 	public static final String DESCRIPTION = "description";
 	public static final String PRODUIT = "produit";
 	public static final String LOGO = "logo";
+	public static final String LAST_EDITED_PRODUCT = "lastEditedProduct";
 	
 	//Paths
 	public static final String XML_PATH = "C:/Cours/GitHub/JSPStock/JSPStock/src/fr/adaming/persistance/xml";

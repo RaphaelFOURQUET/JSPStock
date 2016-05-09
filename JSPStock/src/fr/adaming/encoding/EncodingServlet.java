@@ -15,22 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/test")	//TODO : modifier WebServlet en * et tester ???
 public class EncodingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setCharacterEncoding("UTF-8");
-		request.setCharacterEncoding("UTF-8");
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Auto-generated method stub
-		doGet(request, response);
-	}
 	
 
 	public void doFilter(HttpServletRequest request, HttpServletResponse response,

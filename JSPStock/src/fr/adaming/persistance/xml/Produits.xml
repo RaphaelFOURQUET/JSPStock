@@ -25,4 +25,9 @@
     <nom>Salut</nom>
     <description>Test persistance.</description>
   </Produit>
+  <Produit>
+    <id>5</id>
+    <nom>rgre</nom>
+    <description>egr</description>
+  </Produit>
 </Produits>
