@@ -3,13 +3,20 @@
  */
 package fr.adaming.produits;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  * @author INTI-0332
  *
  */
+@Entity
 public class Produit {
 
+	@Id @GeneratedValue
 	private int id;
+	
 	private String nom;
 	private String description;
 
@@ -39,6 +46,11 @@ public class Produit {
 	
 	public Produit() {
 		
+	}
+	
+	public Produit(String nom, String description) {
+		this.nom = nom;
+		this.description = description;
 	}
 
 	public Produit(int id, String nom, String description) {

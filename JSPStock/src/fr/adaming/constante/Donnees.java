@@ -16,35 +16,35 @@ import fr.adaming.produits.Produit;
 public class Donnees {
 
 	public static List<Produit> produitList = new ArrayList<Produit>(/*
-																		 * Arrays
-																		 * .
-																		 * asList
-																		 * (new
-																		 * Produit
-																		 * (0,
-																		 * "Stylo",
-																		 * "Indispensable pour écrire."
-																		 * ),
-																		 * new
-																		 * Produit
-																		 * (1,
-																		 * "Banane",
-																		 * "Un fruit sphérique."
-																		 * ),
-																		 * new
-																		 * Produit
-																		 * (2,
-																		 * "Table",
-																		 * "Un meuble."
-																		 * ),
-																		 * new
-																		 * Produit
-																		 * (3,
-																		 * "新唐人電視台 "
-																		 * ,
-																		 * "Test UTF-8."
-																		 * ))
-																		 */);
+	 * Arrays
+	 * .
+	 * asList
+	 * (new
+	 * Produit
+	 * (0,
+	 * "Stylo",
+	 * "Indispensable pour écrire."
+	 * ),
+	 * new
+	 * Produit
+	 * (1,
+	 * "Banane",
+	 * "Un fruit sphérique."
+	 * ),
+	 * new
+	 * Produit
+	 * (2,
+	 * "Table",
+	 * "Un meuble."
+	 * ),
+	 * new
+	 * Produit
+	 * (3,
+	 * "新唐人電視台 "
+	 * ,
+	 * "Test UTF-8."
+	 * ))
+	 */);
 
 	public static Produit findProduit(int id) {
 		for (Produit p : produitList) {

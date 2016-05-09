@@ -15,13 +15,10 @@
 
 	<%
 		Produit p = (Produit) request.getAttribute("produit");
-		int freeIndex = (int) request.getAttribute("freeIndex");
+		//int freeIndex = (int) request.getAttribute("freeIndex");
 	%>
-
-	<!-- Id est passe deux fois, en disabled et en hidden pour etre vu par utilisateur (disabled) et transmis en formulaire(hidden) -->
-	<div class="row">
-		<form class="col s12" method="post" action="ajout">
-			<div class="row">
+	
+	<%-- <div class="row">
 				<div class="<%=Constante.COL_SIZE%>">
 					<input disabled value="<%=freeIndex%>" type="text" class="validate"
 						name="<%=Constante.ID%>"> <label>ID</label>
@@ -29,7 +26,11 @@
 				<div class="<%=Constante.COL_SIZE%>">
 					<input value="<%=freeIndex%>" type="hidden" name="<%=Constante.ID%>">
 				</div>
-			</div>
+			</div> --%>
+
+	<!-- Id est passe deux fois, en disabled et en hidden pour etre vu par utilisateur (disabled) et transmis en formulaire(hidden) -->
+	<div class="row">
+		<form class="col s12" method="post" action="ajout">
 			<div class="row">
 				<div class="<%=Constante.COL_SIZE%>">
 					<input placeholder="name" id="name" type="text" class="validate"
@@ -42,7 +43,6 @@
 					<label>Description</label>
 				</div>
 			</div>
-
 			<div class="row">
 
 				<button class="<%=Constante.BUTTON_COLOR %>" type="submit">
