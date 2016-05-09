@@ -45,9 +45,6 @@ public class EditServlet extends HttpServlet {
 		String name = req.getParameter(Constante.NAME);
 		String desc = req.getParameter(Constante.DESCRIPTION);
 		
-		//TODO : Juste un test
-		//produitDAO.addProduit("Edit", "Une description.");
-		
 		//Remettre dans ma liste
 		//Donnees.editProduit(id, name, desc);
 		

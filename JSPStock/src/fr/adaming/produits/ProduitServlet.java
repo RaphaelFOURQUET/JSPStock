@@ -24,14 +24,12 @@ public class ProduitServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//TODO : juste un test
-		//produitDAO.addProduit("Encore un nouveau produit", "Une description2.");
 		
 		//recuperer donnees
 		//Donnees.recupererDonnees();
 		
 		//set
-		request.setAttribute("produits", produitDAO.getProduits());	//TODO modif BD
+		request.setAttribute("produits", produitDAO.getProduits());	//modif BD
 
 		request.getRequestDispatcher("/WEB-INF/produitVue.jsp").forward(request, response);
 	}

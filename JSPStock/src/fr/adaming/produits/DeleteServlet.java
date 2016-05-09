@@ -27,7 +27,7 @@ public class DeleteServlet extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		//Produit p = Donnees.findProduit(id);
 		
-		Produit p = produitDAO.findProduit(id);
+		//Produit p = produitDAO.findProduit(id);
 		
 		//Delete produit
 		//Donnees.removeProduit(p);
@@ -36,7 +36,7 @@ public class DeleteServlet extends HttpServlet {
 		//Donnees.ecrireDonnees();
 		
 		//modif BD
-		produitDAO.deleteProduit(p);
+		produitDAO.deleteProduit(id);
 		
 		//Redirection Produits
 		response.sendRedirect("produit");

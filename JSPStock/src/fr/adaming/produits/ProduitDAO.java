@@ -39,9 +39,11 @@ public class ProduitDAO {
         }
     }
 	
-	public void deleteProduit(Produit p) {
-		if(p != null)
-			em.remove(p);
+	public void deleteProduit(int id) {
+		Produit produit = findProduit(id);
+		if(produit != null) {
+			em.remove(produit);
+		}
 	}
 	
 	public List<Produit> getProduits() {

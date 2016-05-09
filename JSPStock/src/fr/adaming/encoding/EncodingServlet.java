@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class EncodingServlet
  */
-@WebServlet("/test")	//TODO : modifier WebServlet en * et tester ???
+@WebServlet("/test")	//TODO : modifier WebServlet en /* et tester ???
 public class EncodingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -26,6 +26,9 @@ public class EncodingServlet extends HttpServlet {
 
 		// Pass control on to the next filter
 		chain.doFilter(request, response);
+		
+		//rediriger sur URL de base ?
+		//response.sendRedirect(request.getRequestURL());
 
 	}
 

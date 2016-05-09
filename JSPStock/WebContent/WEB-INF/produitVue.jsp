@@ -95,7 +95,7 @@
         	<li class="collection-header"><h4>Mon panier :</h4></li>
        	 	<c:forEach items="${panier.getProduits()}" var="prod" varStatus="status">
 				<li class="collection-item">${prod.getNom()}
-				<a href="deleteFromPanier?ligne=${status.getCount()}">Enlever</a>	<!-- TODO -->
+				<a href="deleteFromPanier?ligne=${status.getIndex()}">Enlever</a>	<!-- TODO -->
 				</li>
 			</c:forEach>
 

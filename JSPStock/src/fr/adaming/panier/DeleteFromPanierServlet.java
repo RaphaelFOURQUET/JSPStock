@@ -21,7 +21,7 @@ public class DeleteFromPanierServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//recuperer id et panier
-		int index = Integer.parseInt(request.getParameter("ligne"))-1;//RFRF : -1 car le status renverra ligne=1 au depart au lieu de 0
+		int index = Integer.parseInt(request.getParameter("ligne"));
 		Panier panier = (Panier) request.getSession().getAttribute("panier");
 		
 		//supprimer du panier
