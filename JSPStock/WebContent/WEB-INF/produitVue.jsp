@@ -11,7 +11,7 @@
 
 <body>
 
-	<% String utilisateurConnecte = (String) request.getSession().getAttribute(Constante.KEY_CONNECTED_USER); 
+	<% String utilisateurConnecte = (String) request.getSession().getAttribute("userName"); 
 		String buttonColor = Constante.BUTTON_COLOR; %>
 
 	<!-- Navbar deplace dans autre jsp -->
@@ -65,7 +65,8 @@
 							</td>
 							<td>${produit.getNom()}</td>
 							<td>${produit.getDescription()}</td>
-							<td><a href="ajoutPanier?id=${produit.getId()}">Ajout panier</a></td>
+							<td><a href="ajoutPanier?id=${produit.getId()}">Ajout
+									panier</a></td>
 							<td><a href="edit?id=${produit.getId()}">Edit</a></td>
 							<td><a href="delete?id=${produit.getId()}">Delete</a></td>
 						</tr>
@@ -73,9 +74,6 @@
 
 					<tr>
 						<td><a href="ajout" class="<%=Constante.BUTTON_COLOR%>">Ajout</a></td>
-						<%-- <td><a href="ajout" class="${buttonColor} test">Ajout +${buttonColor}</a></td>
-						<% System.out.println("sysout : "+buttonColor); %> --%>
-						<!-- le sysout marche :  sysout : red lighten-2 btn waves-effect waves-light mais pas le Ajout + -->
 					</tr>
 
 				</tbody>
@@ -84,23 +82,44 @@
 
 		</div>
 	</div>
-	
+
 	<jsp:useBean id="panier" class="fr.adaming.panier.Panier"
-					scope="session">
+		scope="session">
 				Panier vide crée.
 	</jsp:useBean>
-	
-	<div class="col s10 container">
+
+	<%-- <div class="col s10 container">
 		<ul class="collection with-header">
         	<li class="collection-header"><h4>Mon panier :</h4></li>
        	 	<c:forEach items="${panier.getProduits()}" var="prod" varStatus="status">
 				<li class="collection-item">${prod.getNom()}
-				<a href="deleteFromPanier?ligne=${status.getIndex()}">Enlever</a>	<!-- TODO -->
+				<a href="deleteFromPanier?ligne=${status.getIndex()}">Enlever</a>
 				</li>
 			</c:forEach>
 
    		</ul>
-    </div>
+   		 <a href="validerPanier" class="<%=Constante.BUTTON_COLOR%>">Valider mon panier</a>
+    </div> --%>
+
+	<div class="row">
+		<div class="col s3 offset-s9">
+			<div class="card blue-grey darken-1">
+				<div class="card-content white-text">
+					<span class="card-title">Mon Panier</span>
+					<c:forEach items="${panier.getProductIdQuantities()}" var="element"
+						varStatus="status">
+						<li class="collection-item">${element.key.getNom()} (${element.value})<%-- ${element} --%>
+							<a class="secondary-content" href="deleteFromPanier?id=${element.key.getId()}">Enlever</a>
+						</li>
+					</c:forEach>
+				</div>
+				<div class="card-action">
+					<a href="validerPanier" class="<%=Constante.BUTTON_COLOR%>">Valider mon panier</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 </body>
 <script>

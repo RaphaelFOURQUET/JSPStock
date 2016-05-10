@@ -1,3 +1,4 @@
+<%@page import="fr.adaming.utilisateur.UtilisateurDAO"%>
 <%@ page import="fr.adaming.constante.Constante"%>
 <%@ page language="java" contentType="text/html"%>
 
@@ -5,8 +6,12 @@
 
 <body>
 
-	<% String utilisateurConnecte = (String) request.getSession().getAttribute(Constante.KEY_CONNECTED_USER);
-	%>
+	<% //int connectedUserId = Integer.parseInt((String)request.getSession().getAttribute(Constante.KEY_CONNECTED_USER));
+			//BUG : necessiterait creation AccueilServlet pour verifier user par id et non par name.
+	//dans un servlet accueil ?
+	//String utilisateurConnecte = utilisateurDAO.findUtilisateur(connectedUserId);
+	
+	String utilisateurConnecte = (String)request.getSession().getAttribute("userName"); %>
 
 	<!-- Navbar deplace dans autre jsp -->
 	<jsp:include page="WEB-INF/navBar.jsp">

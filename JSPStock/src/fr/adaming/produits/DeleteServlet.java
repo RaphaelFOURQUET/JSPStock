@@ -27,8 +27,6 @@ public class DeleteServlet extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		//Produit p = Donnees.findProduit(id);
 		
-		//Produit p = produitDAO.findProduit(id);
-		
 		//Delete produit
 		//Donnees.removeProduit(p);
 		
@@ -37,6 +35,9 @@ public class DeleteServlet extends HttpServlet {
 		
 		//modif BD
 		produitDAO.deleteProduit(id);
+		
+		//Produit p = produitDAO.findProduit(id);
+		//produitDAO.deleteProduit(p);	//TODO : bug why ?
 		
 		//Redirection Produits
 		response.sendRedirect("produit");

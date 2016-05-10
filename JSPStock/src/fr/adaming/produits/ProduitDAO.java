@@ -26,7 +26,6 @@ public class ProduitDAO {
 	public Produit addProduit(String name, String description) {
 		Produit p = new Produit(name, description);
 		em.persist(p);
-		//em.flush(); pour envoyer commande a BD et recevoir id ?
 		return p;
 	}
 	
@@ -44,6 +43,10 @@ public class ProduitDAO {
 		if(produit != null) {
 			em.remove(produit);
 		}
+	}
+	
+	public void deleteProduit(Produit p) {
+			em.remove(p);
 	}
 	
 	public List<Produit> getProduits() {

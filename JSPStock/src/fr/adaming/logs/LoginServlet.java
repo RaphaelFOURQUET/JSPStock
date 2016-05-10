@@ -2,6 +2,7 @@ package fr.adaming.logs;
 
 import java.io.IOException;
 
+import javax.ejb.EJB;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.adaming.constante.Constante;
 import fr.adaming.panier.Panier;
+import fr.adaming.utilisateur.Utilisateur;
+import fr.adaming.utilisateur.UtilisateurDAO;
 
 /**
  * Servlet implementation class LoginServlet
@@ -21,6 +24,9 @@ public class LoginServlet extends HttpServlet {
 	
 	@PersistenceUnit(name="MySQL")
 	EntityManagerFactory emt;
+	
+	@EJB
+	private UtilisateurDAO utilisateurDAO;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -33,13 +39,19 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	private void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String sessionLogin = (String) request.getSession().getAttribute(Constante.KEY_CONNECTED_USER);
+//		String sessionLogin = (String) request.getSession().getAttribute(Constante.KEY_CONNECTED_USER);
 		
 		String user = request.getParameter(Constante.PARAM_USER_LOGIN);
-
-		if(sessionLogin == null && user != null && !user.isEmpty()) {
-				request.getSession().setAttribute(Constante.KEY_CONNECTED_USER, user);
+		Utilisateur utilisateur = utilisateurDAO.connectUtilisateur(user);
+		
+		if(utilisateur != null) {
+			request.getSession().setAttribute("userName", utilisateur.getLogin());
+			request.getSession().setAttribute(Constante.KEY_CONNECTED_USER, utilisateur.getId());
 		}
+
+//		if(sessionLogin == null && user != null && !user.isEmpty()) {
+//				request.getSession().setAttribute(Constante.KEY_CONNECTED_USER, user);
+//		}
 
 	}
 	

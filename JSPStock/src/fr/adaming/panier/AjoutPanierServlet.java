@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.adaming.constante.Constante;
-import fr.adaming.produits.Produit;
 import fr.adaming.produits.ProduitDAO;
 
 /**
@@ -42,11 +41,11 @@ public class AjoutPanierServlet extends HttpServlet {
 		//Produit p = Donnees.findProduit(id);
 		//System.out.println(p);
 		
-		Produit p = produitDAO.findProduit(id);
+		//Produit p = produitDAO.findProduit(id);
 		
 		//Recuperation panier + ajout
 		Panier panier = (Panier) request.getSession().getAttribute("panier");
-		panier.addProduit(p);
+		panier.addProduit(produitDAO.findProduit(id));
 		
 		//on repasse le panier
 		request.getSession().setAttribute("panier", panier);

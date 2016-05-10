@@ -6,9 +6,10 @@
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <jta-data-source>jdbc/MySQL</jta-data-source>
 	    <class>fr.adaming.produits.Produit</class>
+	    <class>fr.adaming.utilisateur.Utilisateur</class>
         <properties>
             <!-- none, drop-and-create-tables, create-or-extend-tables, create-tables -->
-            <property name="eclipselink.ddl-generation" value="create-or-extend-tables" />
+            <property name="eclipselink.ddl-generation" value="none" />
         </properties>
     </persistence-unit>
 </persistence>

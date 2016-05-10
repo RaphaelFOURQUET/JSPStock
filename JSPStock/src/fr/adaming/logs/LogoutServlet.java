@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.adaming.constante.Constante;
+import fr.adaming.panier.Panier;
 
 /**
  * Servlet implementation class LogoutServlet
@@ -30,6 +31,11 @@ public class LogoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Remise à zero session
 		request.getSession().setAttribute(Constante.KEY_CONNECTED_USER, null);
+		request.getSession().setAttribute("userName", null);
+		
+		//erase panier
+		Panier panier = new Panier();
+		request.getSession().setAttribute("panier", panier);
 		
 		//redirection
 		response.sendRedirect("index.jsp");
