@@ -59,8 +59,7 @@
 							</td>
 							<td>${produit.getNom()}</td>
 							<td>${produit.getDescription()}</td>
-							<td><a href="ajoutPanier?id=${produit.getId()}">Ajout
-									panier</a></td>
+							<td><a href="ajoutPanier?id=${produit.getId()}">Ajout panier</a></td>
 							<td><a href="edit?id=${produit.getId()}">Edit</a></td>
 							<td><a href="delete?id=${produit.getId()}">Delete</a></td>
 						</tr>

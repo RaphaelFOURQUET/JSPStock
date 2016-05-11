@@ -35,27 +35,15 @@ public class AjoutPanierServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//recuperer l id en parametre
 		int id = Integer.parseInt(request.getParameter(Constante.ID));
-		//System.out.println(id);
-		
-		//Recuperer le produit associé
-		//Produit p = Donnees.findProduit(id);
-		//System.out.println(p);
-		
-		//Produit p = produitDAO.findProduit(id);
 		
 		//Recuperation panier + ajout
 		Panier panier = (Panier) request.getSession().getAttribute("panier");
 		panier.addProduit(produitDAO.findProduit(id));
 		
-		//on repasse le panier
-		//request.getSession().setAttribute("panier", panier);
 		
 		//Recuperation panierId + ajout
 		PanierID panierId = (PanierID) request.getSession().getAttribute("panierId");
 		panierId.addProduit(id);
-				
-		//on repasse le panierId
-		//request.getSession().setAttribute("panierId", panierId);
 		
 		//Rediriger
 		response.sendRedirect(Constante.PRODUIT);
