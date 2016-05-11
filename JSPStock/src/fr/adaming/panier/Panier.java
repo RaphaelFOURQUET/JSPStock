@@ -47,7 +47,7 @@ public class Panier {
 		return Collections.unmodifiableMap( productIdQuantities );
 	}
 
-	public void addProduit( Produit p ) {
+	public void addProduit(Produit p) {
 		if(productIdQuantities.containsKey(p)) {
 			productIdQuantities.put(p, productIdQuantities.get(p)+1);
 		} else {
@@ -55,14 +55,14 @@ public class Panier {
 		}
 	}
 
-	public void deleteProduit( Produit p ) {
+	public void deleteProduit(Produit p) {
 		int qtite = productIdQuantities.get(p);
 		if(qtite <= 1) {
 			//remove
 			productIdQuantities.remove(p);
 		} else {
 			//-1
-			productIdQuantities.put( p, qtite - 1);
+			productIdQuantities.put(p, qtite - 1);
 		}
 		
 	}

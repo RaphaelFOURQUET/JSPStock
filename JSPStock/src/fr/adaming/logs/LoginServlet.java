@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.adaming.constante.Constante;
 import fr.adaming.panier.Panier;
+import fr.adaming.panier.PanierID;
 import fr.adaming.utilisateur.Utilisateur;
 import fr.adaming.utilisateur.UtilisateurDAO;
 
@@ -62,6 +63,9 @@ public class LoginServlet extends HttpServlet {
 		//creation panier
 		Panier panier = new Panier();
 		request.getSession().setAttribute("panier", panier);
+		
+		PanierID panierId = new PanierID();
+		request.getSession().setAttribute("panierId", panierId);
 		
 		response.sendRedirect( "index.jsp" );
 	}

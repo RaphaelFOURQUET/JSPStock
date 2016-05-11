@@ -11,15 +11,17 @@
 
 <body>
 
-	<% String utilisateurConnecte = (String) request.getSession().getAttribute("userName"); 
-		String buttonColor = Constante.BUTTON_COLOR; %>
+	<%
+		String utilisateurConnecte = (String) request.getSession().getAttribute("userName");
+		String buttonColor = Constante.BUTTON_COLOR;
+	%>
 
 	<!-- Navbar deplace dans autre jsp -->
 	<jsp:include page="navBar.jsp">
 		<jsp:param value="${utilisateurConnecte}" name="utilisateurConnecte" />
 		<jsp:param value="Liste de produits" name="logo" />
 	</jsp:include>
-	
+
 	<jsp:useBean id="panier" class="fr.adaming.panier.Panier"
 		scope="session">
 				Panier vide crée.
@@ -48,8 +50,7 @@
 						<%-- 					<c:forEach items='${requestScope["produits"]}' var="produit"> --%>
 						<tr>
 							<td>
-								<!-- ${produit.getId()==lastEditedProduct.getId()} --> 
-								<c:choose>
+								<!-- ${produit.getId()==lastEditedProduct.getId()} --> <c:choose>
 									<c:when test="${produit == lastEditedProduct}">
 										<b>${produit.getId()}</b>
 									</c:when>
@@ -83,16 +84,40 @@
 					<span class="card-title">Mon Panier</span>
 					<c:forEach items="${panier.getProductIdQuantities()}" var="element"
 						varStatus="status">
-						<li class="collection-item">${element.key.getNom()} (${element.value})
-							<a class="secondary-content" href="deleteFromPanier?id=${element.key.getId()}">Enlever</a>
+						<li class="collection-item">${element.key.getNom()}
+							(${element.value}) <a class="secondary-content"
+							href="deleteFromPanier?id=${element.key.getId()}">Enlever</a>
 						</li>
 					</c:forEach>
 				</div>
 				<div class="card-action">
-					<a href="validerPanier" class="<%=Constante.BUTTON_COLOR%>">Valider mon panier</a>
+					<a href="validerPanier" class="<%=Constante.BUTTON_COLOR%>">Valider
+						mon panier</a>
 				</div>
 			</div>
 		</div>
+	</div>
+	
+	<div class="row">
+		<c:forEach items="${requestScope['panierElements']}" var="element"
+			varStatus="status">
+			<div class="col s4">
+				<div class="card blue-grey">
+					<div class="card-content white-text">
+						<span class="card-title">${element.produit.nom}</span>
+						<p>
+							Quantite : <b>${element.quantite}</b>
+						</p>
+						<p>${element.produit.description}</p>
+					</div>
+					<div class="card-action"> 
+					<a href="<c:url value="/deleteFromPanier">
+					<c:param name="id" value="${element.produit.getId()}" />
+					</c:url>">retirer du panier</a>
+					</div>
+				</div>
+			</div>
+		</c:forEach>
 	</div>
 
 

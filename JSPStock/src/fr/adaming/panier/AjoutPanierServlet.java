@@ -48,7 +48,14 @@ public class AjoutPanierServlet extends HttpServlet {
 		panier.addProduit(produitDAO.findProduit(id));
 		
 		//on repasse le panier
-		request.getSession().setAttribute("panier", panier);
+		//request.getSession().setAttribute("panier", panier);
+		
+		//Recuperation panierId + ajout
+		PanierID panierId = (PanierID) request.getSession().getAttribute("panierId");
+		panierId.addProduit(id);
+				
+		//on repasse le panierId
+		//request.getSession().setAttribute("panierId", panierId);
 		
 		//Rediriger
 		response.sendRedirect(Constante.PRODUIT);

@@ -1,6 +1,9 @@
 package fr.adaming.produits;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map.Entry;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -8,6 +11,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import fr.adaming.panier.PanierElement;
+import fr.adaming.panier.PanierID;
 
 
 /**
@@ -27,6 +33,25 @@ public class ProduitServlet extends HttpServlet {
 		
 		//recuperer donnees
 		//Donnees.recupererDonnees();
+		
+		// récupérer le panier
+		PanierID panierId = (PanierID) request.getSession().getAttribute("panierId");
+					
+		// alimenter la vue avec le contenu du panier
+		List<PanierElement> panierElements = new ArrayList<>();
+		
+		if( panierId != null )
+		{
+			for( Entry<Integer, Integer> entry : panierId.getProductIdQuantities().entrySet() )
+			{
+				int produitId = entry.getKey();
+				int quantite = entry.getValue();
+
+				Produit produit = produitDAO.findProduit( produitId );
+				panierElements.add( new PanierElement( produit, quantite ) );
+			}
+		}
+		request.setAttribute( "panierElements", panierElements );
 		
 		//set
 		request.setAttribute("produits", produitDAO.getProduits());	//modif BD

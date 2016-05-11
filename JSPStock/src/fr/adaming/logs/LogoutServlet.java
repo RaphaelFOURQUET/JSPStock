@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.adaming.constante.Constante;
 import fr.adaming.panier.Panier;
+import fr.adaming.panier.PanierID;
 
 /**
  * Servlet implementation class LogoutServlet
@@ -33,9 +34,12 @@ public class LogoutServlet extends HttpServlet {
 		request.getSession().setAttribute(Constante.KEY_CONNECTED_USER, null);
 		request.getSession().setAttribute("userName", null);
 		
-		//erase panier
+		//erase paniers
 		Panier panier = new Panier();
 		request.getSession().setAttribute("panier", panier);
+		
+		PanierID panierId = new PanierID();
+		request.getSession().setAttribute("panierId", panierId);
 		
 		//redirection
 		response.sendRedirect("index.jsp");

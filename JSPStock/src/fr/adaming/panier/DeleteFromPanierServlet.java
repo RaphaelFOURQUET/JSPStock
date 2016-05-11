@@ -34,8 +34,15 @@ public class DeleteFromPanierServlet extends HttpServlet {
 		//panier.deleteAtIndex(index);	si on recupere la ligne et non l id produit (v1)
 		panier.deleteProduit(produitDAO.findProduit(index));
 		
-		//on repasse le panier
-		request.getSession().setAttribute("panier", panier);
+		//on repasse le panier Pas necessaire apparement.
+		//request.getSession().setAttribute("panier", panier);
+		
+		//Recuperation panierId + ajout
+		PanierID panierId = (PanierID) request.getSession().getAttribute("panierId");
+		panierId.deleteProduit(index);
+						
+		//on repasse le panierId
+		//request.getSession().setAttribute("panierId", panierId);
 		
 		//redirect
 		response.sendRedirect(Constante.PRODUIT);
