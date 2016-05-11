@@ -13,7 +13,6 @@
 
 	<%
 		String utilisateurConnecte = (String) request.getSession().getAttribute("userName");
-		String buttonColor = Constante.BUTTON_COLOR;
 	%>
 
 	<!-- Navbar deplace dans autre jsp -->
@@ -23,61 +22,63 @@
 	</jsp:include>
 
 	<jsp:useBean id="panier" class="fr.adaming.panier.Panier"
-		scope="session">
-				Panier vide crée.
+		scope="session">Panier vide crée.
 	</jsp:useBean>
 
 
-	<div class="container">
-		<div class="row">
-			<table class="col s10 striped">
-				<thead>
-					<tr>
-						<th data-field="id">Id</th>
-						<th data-field="name">Name</th>
-						<th data-field="description">Description</th>
-					</tr>
-				</thead>
-				<tbody>
-
-					<jsp:useBean id="lastEditedProduct"
-						class="fr.adaming.produits.Produit" scope="session">
-								Execute seulement si l'objet lastEditedProduct n'existait pas (et est crée à l'instant).
-					</jsp:useBean>
-
-					<!-- JSTL core permet d'eviter le code java dans ma page jsp, notamment pour les boucles. -->
-					<c:forEach items="${produits}" var="produit">
-						<%-- 					<c:forEach items='${requestScope["produits"]}' var="produit"> --%>
-						<tr>
-							<td>
-								<!-- ${produit.getId()==lastEditedProduct.getId()} --> <c:choose>
-									<c:when test="${produit == lastEditedProduct}">
-										<b>${produit.getId()}</b>
-									</c:when>
-									<c:otherwise>${produit.getId()}</c:otherwise>
-								</c:choose>
-							</td>
-							<td>${produit.getNom()}</td>
-							<td>${produit.getDescription()}</td>
-							<td><a href="ajoutPanier?id=${produit.getId()}">Ajout panier</a></td>
-							<td><a href="edit?id=${produit.getId()}">Edit</a></td>
-							<td><a href="delete?id=${produit.getId()}">Delete</a></td>
-						</tr>
-					</c:forEach>
-
-					<tr>
-						<td><a href="ajout" class="<%=Constante.BUTTON_COLOR%>">Ajout</a></td>
-					</tr>
-
-				</tbody>
-
-			</table>
-
-		</div>
-	</div>
-
+	<!-- <div class="container"> -->
 	<div class="row">
-		<div class="col s3 offset-s9">
+		<table class="col s8 striped offset-s1">
+			<thead class="grey">
+				<tr>
+					<th data-field="id">Id</th>
+					<th data-field="name">Name</th>
+					<th data-field="description">Description</th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<jsp:useBean id="lastEditedProduct"
+					class="fr.adaming.produits.Produit" scope="session">
+								Execute seulement si l'objet lastEditedProduct n'existait pas (et est crée à l'instant).
+				</jsp:useBean>
+
+				<!-- JSTL core permet d'eviter le code java dans ma page jsp, notamment pour les boucles. -->
+				<c:forEach items="${produits}" var="produit">
+					<tr>
+						<td>${produit.getId()}</td>
+						<td>
+							<c:choose>
+								<c:when test="${produit == lastEditedProduct}">
+									<b>${produit.getNom()}</b>
+								</c:when>
+								<c:otherwise>${produit.getNom()}</c:otherwise>
+							</c:choose>
+						</td>
+						<td>${produit.getDescription()}</td>
+						<td><a href="ajoutPanier?id=${produit.getId()}">Ajout panier</a></td>
+						<td><a href="edit?id=${produit.getId()}">Edit</a></td>
+						<td><a href="delete?id=${produit.getId()}">Delete</a></td>
+					</tr>
+				</c:forEach>
+
+				<tr>
+					<td><a href="ajout" class="<%=Constante.BUTTON_COLOR%>">Ajout</a></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+
+			</tbody>
+
+		</table>
+
+		<div class="col s3">
 			<div class="card blue-grey darken-1">
 				<div class="card-content white-text">
 					<span class="card-title">Mon Panier</span>
@@ -85,22 +86,20 @@
 						varStatus="status">
 						<li class="collection-item">${element.key.getNom()}
 							(${element.value}) <a class="secondary-content"
-							href="deleteFromPanier?id=${element.key.getId()}">Enlever</a>
+							href="deleteFromPanier?id=${element.key.getId()}">Retirer</a>
 						</li>
 					</c:forEach>
 				</div>
 				<div class="card-action">
-					<a href="validerPanier" class="<%=Constante.BUTTON_COLOR%>">Valider
-						mon panier</a>
+					<a href="validerPanier" class="<%=Constante.BUTTON_COLOR%>">Valider mon panier</a>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="row">
-		<c:forEach items="${requestScope['panierElements']}" var="element"
-			varStatus="status">
-			<div class="col s4">
+		<c:forEach items="${requestScope['panierElements']}" var="element" varStatus="status">
+			<div class="col s2">
 				<div class="card blue-grey">
 					<div class="card-content white-text">
 						<span class="card-title">${element.produit.nom}</span>
@@ -109,10 +108,11 @@
 						</p>
 						<p>${element.produit.description}</p>
 					</div>
-					<div class="card-action"> 
-					<a href="<c:url value="/deleteFromPanier">
-					<c:param name="id" value="${element.produit.getId()}" />
-					</c:url>">retirer du panier</a>
+					<div class="card-action">
+						<a href="<c:url value="/deleteFromPanier">
+							<c:param name="id" value="${element.produit.getId()}" />
+							</c:url>">Retirer du panier
+						</a>
 					</div>
 				</div>
 			</div>

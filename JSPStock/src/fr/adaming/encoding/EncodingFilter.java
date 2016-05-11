@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebFilter;
 /**
  * Servlet Filter implementation class EncodingFilter
  */
-@WebFilter("/ufgifuiu")	//URL inateignable car marche mieux sans ...
+@WebFilter("")	//URL inatteignable car marche mieux sans ...
 public class EncodingFilter implements Filter {
 
     /**
