@@ -48,32 +48,23 @@ public class Panier {
 	}
 
 	public void addProduit( Produit p ) {
-		boolean notPresent= true;
-		for(Produit prod : productIdQuantities.keySet()) {
-			if(prod.getId() == p.getId()) {
-				//+1
-				productIdQuantities.put( prod, productIdQuantities.get(prod)+1 );
-				notPresent = false;
-			}
-		}
-		if(notPresent) {
-			productIdQuantities.put( p, 1 );
+		if(productIdQuantities.containsKey(p)) {
+			productIdQuantities.put(p, productIdQuantities.get(p)+1);
+		} else {
+			productIdQuantities.put(p, 1);
 		}
 	}
 
 	public void deleteProduit( Produit p ) {
-		Produit pToDel = null;
-		for(Produit prod : productIdQuantities.keySet()) {
-			if(prod.getId() == p.getId()) {
-				int qtite = productIdQuantities.get(prod);
-				if(qtite <= 1)
-					pToDel = prod;
-				else
-					productIdQuantities.put( prod, qtite - 1 );
-			}
+		int qtite = productIdQuantities.get(p);
+		if(qtite <= 1) {
+			//remove
+			productIdQuantities.remove(p);
+		} else {
+			//-1
+			productIdQuantities.put( p, qtite - 1);
 		}
-		if(pToDel != null)
-			productIdQuantities.remove( pToDel );
+		
 	}
 
 }

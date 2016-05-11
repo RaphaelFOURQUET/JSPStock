@@ -3,14 +3,36 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/persistence 
                         http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
     <persistence-unit name="MySQL" transaction-type="JTA">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <jta-data-source>jdbc/MySQL</jta-data-source>
+        
+        <class>fr.adaming.produits.Produit</class>
+        <class>fr.adaming.utilisateur.Utilisateur</class>
+
+        <properties>
+            <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform" />
+            
+            <!-- validate, update, create, create-drop -->
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+        </properties>
+    </persistence-unit>
+</persistence>
+<!-- Par eclipseLink -->
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence 
+                        http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+    <persistence-unit name="MySQL" transaction-type="JTA">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <jta-data-source>jdbc/MySQL</jta-data-source>
 	    <class>fr.adaming.produits.Produit</class>
 	    <class>fr.adaming.utilisateur.Utilisateur</class>
         <properties>
-            <!-- none, drop-and-create-tables, create-or-extend-tables, create-tables -->
+            none, drop-and-create-tables, create-or-extend-tables, create-tables
             <property name="eclipselink.ddl-generation" value="none" />
         </properties>
     </persistence-unit>
-</persistence>
+</persistence> -->
 

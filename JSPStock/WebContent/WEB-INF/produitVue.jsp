@@ -19,6 +19,11 @@
 		<jsp:param value="${utilisateurConnecte}" name="utilisateurConnecte" />
 		<jsp:param value="Liste de produits" name="logo" />
 	</jsp:include>
+	
+	<jsp:useBean id="panier" class="fr.adaming.panier.Panier"
+		scope="session">
+				Panier vide crée.
+	</jsp:useBean>
 
 
 	<div class="container">
@@ -33,19 +38,6 @@
 				</thead>
 				<tbody>
 
-					<%-- <% List<Produit> listP = (List<Produit>) request.getAttribute("produits"); 
-			for(Produit p : listP) { %>
-
-					<tr>
-						<td><%=p.getId()%></td>
-						<td><%=p.getNom() %></td>
-						<td><%=p.getDescription() %></td>
-						<td><a href="edit?id=<%=p.getId() %>">Edit</a></td>
-						<td><a href="delete?id=<%=p.getId() %>">Delete</a></td>
-					</tr>
-
-					<%	} %> --%>
-
 					<jsp:useBean id="lastEditedProduct"
 						class="fr.adaming.produits.Produit" scope="session">
 								Execute seulement si l'objet lastEditedProduct n'existait pas (et est crée à l'instant).
@@ -56,7 +48,8 @@
 						<%-- 					<c:forEach items='${requestScope["produits"]}' var="produit"> --%>
 						<tr>
 							<td>
-								<!-- ${produit.getId()==lastEditedProduct.getId()} --> <c:choose>
+								<!-- ${produit.getId()==lastEditedProduct.getId()} --> 
+								<c:choose>
 									<c:when test="${produit == lastEditedProduct}">
 										<b>${produit.getId()}</b>
 									</c:when>
@@ -83,24 +76,6 @@
 		</div>
 	</div>
 
-	<jsp:useBean id="panier" class="fr.adaming.panier.Panier"
-		scope="session">
-				Panier vide crée.
-	</jsp:useBean>
-
-	<%-- <div class="col s10 container">
-		<ul class="collection with-header">
-        	<li class="collection-header"><h4>Mon panier :</h4></li>
-       	 	<c:forEach items="${panier.getProduits()}" var="prod" varStatus="status">
-				<li class="collection-item">${prod.getNom()}
-				<a href="deleteFromPanier?ligne=${status.getIndex()}">Enlever</a>
-				</li>
-			</c:forEach>
-
-   		</ul>
-   		 <a href="validerPanier" class="<%=Constante.BUTTON_COLOR%>">Valider mon panier</a>
-    </div> --%>
-
 	<div class="row">
 		<div class="col s3 offset-s9">
 			<div class="card blue-grey darken-1">
@@ -108,7 +83,7 @@
 					<span class="card-title">Mon Panier</span>
 					<c:forEach items="${panier.getProductIdQuantities()}" var="element"
 						varStatus="status">
-						<li class="collection-item">${element.key.getNom()} (${element.value})<%-- ${element} --%>
+						<li class="collection-item">${element.key.getNom()} (${element.value})
 							<a class="secondary-content" href="deleteFromPanier?id=${element.key.getId()}">Enlever</a>
 						</li>
 					</c:forEach>

@@ -5,6 +5,7 @@ package fr.adaming.utilisateur;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
@@ -17,7 +18,7 @@ import javax.persistence.NamedQuery;
 			query="select u from Utilisateur u where u.login=:login")
 public class Utilisateur {
 	
-	@Id @GeneratedValue
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
 	private String login;
