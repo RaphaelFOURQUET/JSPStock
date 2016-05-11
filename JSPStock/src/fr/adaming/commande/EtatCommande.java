@@ -9,6 +9,6 @@ package fr.adaming.commande;
  */
 public enum EtatCommande {
 	PREPARATION,
-	EXPEDIED;
+	EXPEDIE;
 
 }

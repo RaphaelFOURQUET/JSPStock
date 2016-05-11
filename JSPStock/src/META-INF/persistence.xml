@@ -9,6 +9,8 @@
         
         <class>fr.adaming.produits.Produit</class>
         <class>fr.adaming.utilisateur.Utilisateur</class>
+        <class>fr.adaming.commande.Commande</class>
+        <class>fr.adaming.commande.LigneCommande</class>
 
         <properties>
             <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform" />

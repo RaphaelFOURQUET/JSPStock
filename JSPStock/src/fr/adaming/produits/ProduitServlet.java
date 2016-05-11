@@ -48,7 +48,8 @@ public class ProduitServlet extends HttpServlet {
 				int quantite = entry.getValue();
 
 				Produit produit = produitDAO.findProduit( produitId );
-				panierElements.add( new PanierElement( produit, quantite ) );
+				if(produit != null)
+					panierElements.add( new PanierElement( produit, quantite ) );
 			}
 		}
 		request.setAttribute( "panierElements", panierElements );

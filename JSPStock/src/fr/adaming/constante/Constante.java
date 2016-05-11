@@ -21,6 +21,7 @@ public class Constante {
 	
 	//Paths
 	public static final String XML_PATH = "C:/Cours/GitHub/JSPStock/JSPStock/src/fr/adaming/persistance/xml";
+	public static final String URL_HOME = "index.jsp";
 	
 	//interface materialize
 	//RFRF : necessite un clean tomcat à chaque changement.

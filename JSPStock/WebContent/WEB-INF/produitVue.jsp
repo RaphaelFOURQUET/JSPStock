@@ -22,7 +22,7 @@
 	</jsp:include>
 
 	<jsp:useBean id="panier" class="fr.adaming.panier.Panier"
-		scope="session">Panier vide crée.
+		scope="session">
 	</jsp:useBean>
 
 
@@ -43,7 +43,7 @@
 
 				<jsp:useBean id="lastEditedProduct"
 					class="fr.adaming.produits.Produit" scope="session">
-								Execute seulement si l'objet lastEditedProduct n'existait pas (et est crée à l'instant).
+								Executé seulement si l'objet lastEditedProduct n'existait pas (et est crée à l'instant).
 				</jsp:useBean>
 
 				<!-- JSTL core permet d'eviter le code java dans ma page jsp, notamment pour les boucles. -->
@@ -91,7 +91,9 @@
 					</c:forEach>
 				</div>
 				<div class="card-action">
-					<a href="validerPanier" class="<%=Constante.BUTTON_COLOR%>">Valider mon panier</a>
+					<form method="post" action="validerPanier" >
+						<button type="submit" class="<%=Constante.BUTTON_COLOR%>">Valider mon panier</button>
+					</form>
 				</div>
 			</div>
 		</div>
