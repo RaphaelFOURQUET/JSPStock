@@ -16,16 +16,15 @@ import fr.adaming.utilisateur.Utilisateur;
  * @author INTI-0332
  *
  */
-@Stateless
+@Stateless 
 public class CommandeDAO {
 	
 	@PersistenceContext(unitName="MySQL")
 	EntityManager em;
 	
 	
-	public Commande storeCommande(Commande commande) {
+	public void storeCommande(Commande commande) {
 		em.persist(commande);
-		return commande;
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -33,7 +32,7 @@ public class CommandeDAO {
 		
 		//Requete JPQL
 		Query q = em.createQuery( "select c from Commande c join fetch c.lignes where c.createur=:utilisateur" );
-		q.setParameter( "utilisateur", connectedUser );
+		q.setParameter("utilisateur", connectedUser);	//set le parametre :utilisateur de la query
 
 		return q.getResultList();
 	}

@@ -15,7 +15,7 @@ import fr.adaming.produits.Produit;
  * @author INTI-0332
  *
  */
-@Entity
+@Entity 
 public class LigneCommande {
 	
 	@Id

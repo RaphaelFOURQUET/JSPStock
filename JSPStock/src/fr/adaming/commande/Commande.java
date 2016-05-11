@@ -3,6 +3,7 @@
  */
 package fr.adaming.commande;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class Commande {
 	private Utilisateur createur;
 	
 	@OneToMany( cascade = { CascadeType.REMOVE, CascadeType.PERSIST }, mappedBy = "commande" )
-	List<LigneCommande> lignes;
+	List<LigneCommande> lignes = new ArrayList<LigneCommande>();
 	
 	private EtatCommande etatCommande;
 	
@@ -66,16 +67,17 @@ public class Commande {
 		return dateCommande;
 	}
 
-	public void setDateCommande(Date dateCommande) {
-		this.dateCommande = dateCommande;
-	}
-
 	public int getId() {
 		return id;
 	}
 	
 	public Commande () {
 		this.dateCommande = new Date();
+	}
+
+	public void addLigne(LigneCommande ligne) {
+		// Auto-generated method stub
+		this.lignes.add(ligne);
 	}
 	
 	
