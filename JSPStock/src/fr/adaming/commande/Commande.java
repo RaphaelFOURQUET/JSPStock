@@ -23,25 +23,34 @@ import fr.adaming.utilisateur.Utilisateur;
  */
 @Entity
 public class Commande {
-	
+
 	@Id
-	@GeneratedValue( strategy = GenerationType.IDENTITY )
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@ManyToOne
 	private Utilisateur createur;
-	
-											//EAGER : Force le chargement des LigneCommande à chaque requete sur Commande
-	@OneToMany( cascade = { CascadeType.REMOVE, CascadeType.PERSIST }, mappedBy = "commande"/*, fetch = FetchType.EAGER */)
+
+	// EAGER : Force le chargement des LigneCommande à chaque requete sur
+	// Commande
+	@OneToMany(cascade = { CascadeType.REMOVE,
+			CascadeType.PERSIST }, mappedBy = "commande"/*
+														 * , fetch =
+														 * FetchType.EAGER
+														 */)
 	List<LigneCommande> lignes = new ArrayList<LigneCommande>();
-	
+
 	private EtatCommande etatCommande;
-	
-	//Date
+
+	// Date
 	private Date dateCommande;
 
 	public Utilisateur getCreateur() {
 		return createur;
+	}
+
+	public boolean getEnPreparation() {
+		return EtatCommande.PREPARATION == etatCommande;
 	}
 
 	public void setCreateur(Utilisateur createur) {
@@ -71,17 +80,17 @@ public class Commande {
 	public int getId() {
 		return id;
 	}
-	
-	public Commande () {
+
+	public Commande() {
 		this.dateCommande = new Date();
 	}
 
 	public void addLigne(LigneCommande ligne) {
 		// Auto-generated method stub
-		ligne.setCommande(this);	//RFRF : set la commande de LigneCommande pour avoir ma clé etrangère dans la base.
+		ligne.setCommande(this); // RFRF : set la commande de LigneCommande pour
+									// avoir ma clé etrangère dans la base.
 		this.lignes.add(ligne);
 	}
-	
-	
+
 
 }
