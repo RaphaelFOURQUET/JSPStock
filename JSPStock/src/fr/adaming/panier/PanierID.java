@@ -40,5 +40,9 @@ public class PanierID {
 		}
 		
 	}
+	
+	public void clear() {
+		this.productIdQuantities.clear();
+	}
 
 }

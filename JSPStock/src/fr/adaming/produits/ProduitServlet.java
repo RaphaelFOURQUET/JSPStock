@@ -12,8 +12,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.adaming.constante.Constante;
 import fr.adaming.panier.PanierElement;
 import fr.adaming.panier.PanierID;
+import fr.adaming.utilisateur.UserStatic;
+import fr.adaming.utilisateur.Utilisateur;
+import fr.adaming.utilisateur.UtilisateurDAO;
 
 
 /**
@@ -25,14 +29,20 @@ public class ProduitServlet extends HttpServlet {
 	
 	@EJB
 	private ProduitDAO produitDAO;
+	
+	@EJB
+	private UtilisateurDAO utilisateurDAO;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//recuperer donnees
-		//Donnees.recupererDonnees();
+		//Verif utilisateur connecte
+		Integer connectedUserId = (Integer) request.getSession().getAttribute( Constante.KEY_CONNECTED_USER );
+		Utilisateur connectedUser = utilisateurDAO.findUtilisateur( connectedUserId );
+		if(!UserStatic.isLogged(response, connectedUser))
+			return;
 		
 		// récupérer le panier
 		PanierID panierId = (PanierID) request.getSession().getAttribute("panierId");

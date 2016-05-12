@@ -91,9 +91,11 @@
 					</c:forEach>
 				</div>
 				<div class="card-action">
+				<c:if test="${!panier.getProductIdQuantities().isEmpty()}">
 					<form method="post" action="validerPanier" >
 						<button type="submit" class="<%=Constante.BUTTON_COLOR%>">Valider mon panier</button>
 					</form>
+					</c:if>
 				</div>
 			</div>
 		</div>

@@ -37,7 +37,7 @@ public class LogoutServlet extends HttpServlet {
 //		PanierID panierId = new PanierID();
 //		request.getSession().setAttribute("panierId", panierId);
 		
-		request.getSession().invalidate();
+		request.getSession().invalidate();	//RFRF : invalide toutes les variables de session
 		
 		//redirection
 		response.sendRedirect("index.jsp");

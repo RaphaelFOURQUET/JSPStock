@@ -66,5 +66,9 @@ public class Panier {
 		}
 		
 	}
+	
+	public void clear() {
+		this.productIdQuantities.clear();
+	}
 
 }

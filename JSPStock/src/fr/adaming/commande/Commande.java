@@ -31,7 +31,8 @@ public class Commande {
 	@ManyToOne
 	private Utilisateur createur;
 	
-	@OneToMany( cascade = { CascadeType.REMOVE, CascadeType.PERSIST }, mappedBy = "commande" )
+											//EAGER : Force le chargement des LigneCommande à chaque requete sur Commande
+	@OneToMany( cascade = { CascadeType.REMOVE, CascadeType.PERSIST }, mappedBy = "commande"/*, fetch = FetchType.EAGER */)
 	List<LigneCommande> lignes = new ArrayList<LigneCommande>();
 	
 	private EtatCommande etatCommande;
@@ -77,6 +78,7 @@ public class Commande {
 
 	public void addLigne(LigneCommande ligne) {
 		// Auto-generated method stub
+		ligne.setCommande(this);	//RFRF : set la commande de LigneCommande pour avoir ma clé etrangère dans la base.
 		this.lignes.add(ligne);
 	}
 	

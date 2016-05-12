@@ -17,6 +17,7 @@ import fr.adaming.commande.LigneCommande;
 import fr.adaming.constante.Constante;
 import fr.adaming.produits.Produit;
 import fr.adaming.produits.ProduitDAO;
+import fr.adaming.utilisateur.UserStatic;
 import fr.adaming.utilisateur.Utilisateur;
 import fr.adaming.utilisateur.UtilisateurDAO;
 
@@ -30,7 +31,7 @@ public class ValiderPanier extends HttpServlet {
 	@EJB
 	private UtilisateurDAO utilisateurDAO;
 
-	//@EJB
+	@EJB
 	private CommandeDAO commandesDAO;
 
 	@EJB
@@ -44,17 +45,15 @@ public class ValiderPanier extends HttpServlet {
 		//Verif utilisateur connecte
 		Integer connectedUserId = (Integer) request.getSession().getAttribute( Constante.KEY_CONNECTED_USER );
 		Utilisateur connectedUser = utilisateurDAO.findUtilisateur( connectedUserId );
-		if( connectedUser == null )
-		{
-			response.sendRedirect( Constante.URL_HOME );
+		if(!UserStatic.isLogged(response, connectedUser))
 			return;
-		}
 		
 		//Recuperer le panier
 		PanierID panierId = (PanierID) request.getSession().getAttribute("panierId");
+		Panier panier = (Panier) request.getSession().getAttribute("panier");
 		
 		//Si non null 
-		if(panierId != null) {
+		if(panierId != null && !panierId.getProductIdQuantities().isEmpty()) {
 			//creer la commande
 			Commande commande = new Commande();
 			commande.setCreateur(utilisateurDAO.findUtilisateur(connectedUserId));
@@ -76,7 +75,14 @@ public class ValiderPanier extends HttpServlet {
 				commande.addLigne(ligne);
 			}
 			//store commande en BD
-			commandesDAO.storeCommande(commande);	//nullPointerException ? probleme avec la BD
+			commandesDAO.storeCommande(commande);
+			
+			//Clear mon panier
+			panierId.clear();
+			panier.clear();
+			
+			//indiquer à la vue qu'une commande est présente
+			request.getSession().setAttribute("possessCommande", true);
 			
 		}
 		
